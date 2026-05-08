@@ -1,0 +1,36 @@
+# ============================================================
+# Uber Data Engineering Pipeline
+# Setup Commands Reference
+# ============================================================
+
+# --- Step 1: Update system packages (Linux/Ubuntu) ---
+sudo apt-get update
+sudo apt-get install python3-distutils
+sudo apt-get install python3-apt
+sudo apt-get install wget
+
+# --- Step 2: Install pip (if not already installed) ---
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+
+# --- Step 3: Install Mage AI ---
+pip3 install mage-ai
+
+# --- Step 4: Install Pandas ---
+pip3 install pandas
+
+# --- Step 5: Install Google Cloud libraries ---
+pip3 install google-cloud
+pip3 install google-cloud-bigquery
+
+# --- Step 6: Start Mage AI pipeline project ---
+mage start uber_pipeline
+
+# --- Step 7: Set GCP credentials environment variable ---
+# Replace the path below with the actual path to your service account JSON key
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
+
+# --- Step 8: Verify installations ---
+python3 -c "import mage_ai; print('Mage AI version:', mage_ai.__version__)"
+python3 -c "import pandas; print('Pandas version:', pandas.__version__)"
+python3 -c "from google.cloud import bigquery; print('BigQuery client ready')"
